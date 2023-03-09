@@ -1,0 +1,185 @@
+###
+# Author:       Victor Paredes, Guillermo Castillo
+# Email:        paredescauna.1@osu.edu, castillomartinez.2@osu.edu
+# Modified:     01-25-2022
+# Copyright:    Cyberbotics Lab @The Ohio State University
+###
+
+title = "Robot Configuration"
+
+[robot]
+name = "digit"
+
+[safety]
+  safety_parameter = 0.99
+
+[filter]
+  use_filter = "yes"
+  window_size = 20
+
+[control]
+  control_mode = "TrajOptimization"
+
+#[mode] TODO
+
+# the joint tracking motor controller's parameters and some limits
+
+[pid-floating]
+  [pid-floating.HipRoll]
+  Kp = 1500
+  Kd = 5
+  [pid-floating.HipYaw]
+  Kp = 1000
+  Kd = 5
+  [pid-floating.HipPitch]
+  Kp = 1000
+  Kd = 5
+  [pid-floating.Knee]
+  Kp = 1200
+  Kd = 5
+  [pid-floating.ToeA]
+  Kp = 200
+  Kd = 5
+  [pid-floating.ToeB]
+  Kp = 200
+  Kd = 5
+  [pid-floating.ShoulderRoll]
+  Kp = 500
+  Kd = 5
+  [pid-floating.ShoulderPitch]
+  Kp = 500
+  Kd = 5
+  [pid-floating.ShoulderYaw]
+  Kp = 500
+  Kd = 5
+  [pid-floating.Elbow]
+  Kp = 500
+  Kd = 5
+
+
+[pid-contact]
+  [pid-contact.HipRoll]
+  Kp = 1200
+  Kd = 5
+  [pid-contact.HipYaw]
+  Kp = 1000
+  Kd = 5
+  [pid-contact.HipPitch]
+  Kp = 1000
+  Kd = 5
+  [pid-contact.Knee]
+  Kp = 1200
+  Kd = 5
+  [pid-contact.ToeA]
+  Kp = 1000
+  Kd = 5
+  [pid-contact.ToeB]
+  Kp = 1000
+  Kd = 5
+  [pid-contact.ShoulderRoll]
+  Kp = 500
+  Kd = 5
+  [pid-contact.ShoulderPitch]
+  Kp = 500
+  Kd = 5
+  [pid-contact.ShoulderYaw]
+  Kp = 500
+  Kd = 5
+  [pid-contact.Elbow]
+  Kp = 500
+  Kd = 5
+
+
+[pid-limits]
+  [pid-limits.HipRoll]
+  Max = 116.682
+  Min = -116.682
+  [pid-limits.HipYaw]
+  Max = 70.1765
+  Min = -70.1765
+  [pid-limits.HipPitch]
+  Max = 206.928
+  Min = -206.928
+  [pid-limits.Knee]
+  Max = 220.928
+  Min = -220.928
+  [pid-limits.ToeA]
+  Max = 35.9759
+  Min = -35.9759
+  [pid-limits.ToeB]
+  Max = 35.9759
+  Min = -35.9759
+  [pid-limits.ShoulderRoll]
+  Max = 116.682
+  Min = -116.682
+  [pid-limits.ShoulderPitch]
+  Max = 116.682
+  Min = -116.682
+  [pid-limits.ShoulderYaw]
+  Max = 116.682
+  Min = -116.682
+  [pid-limits.Elbow]
+  Max = 70.1765
+  Min = -70.1765
+
+  # The torque_limits are the actual motor limits. The one in pid are more  
+  # restrictive and are used PID control.
+  # torque_limits << 126.682, 79.1765, 216.928, 231.317, 41.9759, 41.9759, 
+  #                    126.682, 79.1765, 216.928, 231.317, 41.9759, 41.9759, 
+  #                    126.682, 126.682, 79.1765, 126.682, 
+  #                    126.682, 126.682, 79.1765, 126.682;
+
+
+[pid-standing]
+  [pid-standing.HipRoll] #Gain for hip roll joint PD
+  Kp = 1500
+  Kd = 5
+  [pid-standing.HipYaw] #Gain for hip yaw joint PD
+  Kp = 1000
+  Kd = 5
+  [pid-standing.HipPitch]   #Gain for hip pitch joint PD
+  Kp = 1500
+  Kd = 5
+  [pid-standing.Knee]    #Gain for knee joint PD
+  Kp = 1500
+  Kd = 5
+  [pid-standing.ToeA]   #Gain for actuated joints
+  Kp = 400
+  Kd = 0
+  [pid-standing.ToeB]
+  Kp = 400
+  Kd = 0
+
+  [pid-standing.ShoulderRoll]
+  Kp = 500
+  Kd = 5
+  [pid-standing.ShoulderPitch]
+  Kp = 500
+  Kd = 5
+  [pid-standing.ShoulderYaw]
+  Kp = 500
+  Kd = 5
+  [pid-standing.Elbow]
+  Kp = 500
+  Kd = 5
+
+  [pid-standing.ToeStand]     #Gain for toe delta trajectory
+  Kp = 0.60    # Real: Kp = 1.5, Sim = 0.5
+  Kd = 0.01   # Real: Kp = 0, Sim = 0.05
+  [pid-standing.LateralStand] #Gain for left-right tune used for delta_leg
+  Kp = 1.0    # Real: Kp = 2, Sim = 1.5
+  Kd = 0.01   # Real: Kp = 0, Sim = 0.05
+
+[parameters_standing]
+  LSA = 0.4 
+  RHA = 0
+  RVA = 0
+  StepPeriod = 0.4
+  ShiftTime = 1.0
+  ShiftDistance = 0.025
+  StandingAbductionOffset = 0.335
+  # LL_des = 0.4
+  StandingSwitchTime = 1
+  StandOffset = 0.03   #sim=0.03   real=0.06
+  MaxTimeStandControl = 1
+

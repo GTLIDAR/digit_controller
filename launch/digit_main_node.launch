@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- declare arg to be passed in -->
+	<arg name="run_sim"/> 
+	<arg name="use_psp"/>
+	    
+    <!-- Digit Interface Node -->
+    <node pkg="digit_main" type="digit_main" name="digit_main_node" output="screen"></node>
+    <!-- read value of arg -->
+    <param name="sim_mode" value="$(arg run_sim)"/>
+    <param name="use_psp" value="$(arg use_psp)"/>
+
+
+</launch>

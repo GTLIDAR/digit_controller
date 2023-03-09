@@ -1,0 +1,15 @@
+simulator/**
+api_AR/**
+logMain/
+
+log_data/
+log_data_hw/
+.vscode/
+doctest.h
+
+lowlevelapi/
+lowlevelapi_22/
+build/
+cmake-build-debug/
+cmake-build-release/
+.idea/

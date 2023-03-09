@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- declare arg to be passed in -->
+	<arg name="run_sim"/> 
+
+    <!-- Websockets Node -->
+    <node pkg="digit_main" type="websockets_node.py" name="websockets_node" output="screen"></node>
+    <!-- read value of arg -->
+    <param name="sim_mode" value="$(arg run_sim)"/>
+</launch>

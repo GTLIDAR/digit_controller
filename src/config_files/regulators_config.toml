@@ -1,0 +1,45 @@
+###
+# Author:       Victor Paredes, Guillermo Castillo
+# Email:        paredescauna.1@osu.edu, castillomartinez.2@osu.edu
+# Modified:     01-25-2022
+# Copyright:    Cyberbotics Lab @The Ohio State University
+###
+
+title = "Regulators"
+
+[sagittal-foot-placement]
+  Kp = 0.4# For HZD controller 
+  Kd = 0.0 #0.08#0.2
+  vx_offset = 0.0 #0.1
+
+[frontal-foot-placement]
+  Kp = 0.4 # For HZD controller 
+  Kd = 0.00 #0.07#0.01
+  vy_offset = 0.0#-0.01
+
+[torso-pitch]
+  Kp = 1000
+  Kd = 100
+
+[torso-roll]
+  Kp = 3000
+  Kd = 100 
+
+[torso-yaw]
+  Kp = 500
+  Kd = 50
+
+[toe-regulation]
+  landing_pitch_offset_left = -0.028 #-0.08 #negative values tilt the pitch forward (robot land with front toe) and makes the robot to drift more bakward
+                                          #positive values tilt the pitch bakwards (robot land with heel) and makes the robot to drift more forward
+  landing_pitch_offset_right = -0.028 #-0.08 
+[heuristics]
+  # for walking
+  force_threshold_sim = 40 
+  force_threshold_hardware = 40 
+  # for inplace walking
+  #current = 80
+  pitch_offset = 0.00
+  hip_roll_offset = 0.023
+  hip_yaw_offset = 0.0
+  henke_ankle_offset = 0.00

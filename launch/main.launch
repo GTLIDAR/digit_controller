@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- <arg name="run_sim_global" value="False" /> -->
+	<arg name="run_sim_global" value="True" />
+  <arg name="use_psp" default="True" />
+
+	<include file="$(find digit_main)/launch/digit_main_node.launch">
+	    <arg name="run_sim" value="$(arg run_sim_global)" />
+      <arg name="use_psp" value="$(arg use_psp)" />
+	</include>
+	
+	<include file="$(find digit_main)/launch/websockets_launch.launch">
+		<arg name="run_sim" value="$(arg run_sim_global)" /> 
+	</include>
+	
+  <group if="$(arg run_sim_global)">
+    <node pkg="rosbag" type="record" name="rosbag_record_digit" output="screen" 
+      args="--split --duration=10m -b 0 -o $(find digit_main)/log_data/ 
+      /digit_state /tb01_odom /tb02_odom"/>	
+  </group>
+	<group unless="$(arg run_sim_global)">
+    <node pkg="rosbag" type="record" name="rosbag_record_digit" output="screen" 
+      args="--split --duration=10m -b 0 -o $(find digit_main)/log_data_hw/ 
+      /digit_state /tb01_odom /tb02_odom"/>	
+  </group>
+	<!-- realtime monitoring with plotjuggler -->
+	<!-- <node pkg="plotjuggler" type="plotjuggler" name="plotjuggler_with_layout" output="log" args="-l $(find digit_main)/log/plotjuggler_layout.xml"/> -->
+
+  <node pkg="digit_main" type="keyinput.py" name="keyboard_control" output="screen"></node>
+  <node pkg="joy" type="joy_node" name="digit_joy">
+    <!-- The value must be set to jsX depending on which is the joystick -->
+    <param name="dev" type="string" value="/dev/input/js0"/>
+    <!-- <param name="deadzone" value="0.12" /> -->
+  </node>
+</launch>

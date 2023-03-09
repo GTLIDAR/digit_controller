@@ -1,0 +1,6 @@
+<launch>
+	<include file="$(find digit_main)/launch/main.launch">
+		<arg name="run_sim_global" value="False" />
+		<arg name="use_psp" value="False" />
+	</include>
+</launch>

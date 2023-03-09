@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+    
+	<!-- realtime monitoring with plotjuggler -->
+	<node pkg="plotjuggler" type="plotjuggler" name="plotjuggler_with_layout" 
+          output="log" args="-l $(find digit_main)/log/PSP_tracking.xml"/>
+</launch>

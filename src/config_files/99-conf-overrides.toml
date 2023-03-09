@@ -1,0 +1,6 @@
+# This override was added for the 2020.11.27 release to compensate for higher
+# than expected encoder noise on the right/left hip pitch, knee, and toe motor
+# outputs. There is potential for mechanical adjustments to improve this, 
+# but robot performance should not be significantly impaired
+[sensor.encoder.iC-MHM]
+max-noise = 25

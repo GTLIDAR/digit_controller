@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find digit_main)/launch/main.launch">
+		<arg name="use_psp" value="False" />
+	</include>
+</launch>
